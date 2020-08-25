@@ -76,12 +76,13 @@ d3.csv("assets/data/data.csv").then(function(HealthData) {
     .attr("dx", d => xLinearScale(d.poverty))
     .attr("dy", d => yLinearScale(d.healthcare))
     .style("text-anchor", "middle")
-    .style("font-size", "10px")
+    .style("font-size", "10px");
+    
 
     // Initialize tool tip
     var toolTip = d3.tip()
       .attr("class", "tooltip")
-      .offset([80, -60])
+      .offset([40, -60])
       .html(function(d) {
         return (`Poverty: ${d.poverty}<br>HealthCare: ${d.healthcare}`);
       });
@@ -105,12 +106,12 @@ d3.csv("assets/data/data.csv").then(function(HealthData) {
       .attr("x", 0 - (height / 2))
       .attr("dy", "1em")
       .attr("class", "axisText")
-      .text("HealthCare");
+      .text("Lacks HealthCare(%)");
 
     chartGroup.append("text")
       .attr("transform", `translate(${width / 2}, ${height + margin.top + 30})`)
       .attr("class", "axisText")
-      .text("Poverty");
+      .text("In Poverty(%)");
   }).catch(function(error) {
     console.log(error);
   });
